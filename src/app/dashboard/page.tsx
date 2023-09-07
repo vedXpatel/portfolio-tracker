@@ -35,7 +35,6 @@ export default function Dashboard () {
                 </button>
                 <table>
                     <thead>
-                    <th></th>
                     </thead>
                     <tbody>
 
