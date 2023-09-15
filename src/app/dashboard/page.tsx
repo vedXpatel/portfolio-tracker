@@ -33,13 +33,6 @@ export default function Dashboard () {
                         Upstox
                     </a>
                 </button>
-                <table>
-                    <thead>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
             </div>
         </>
     )
