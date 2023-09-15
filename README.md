@@ -11,6 +11,13 @@ yarn dev
 # or
 pnpm dev
 ```
+For routing NextJS server to HTTPS protocol
+```bash
+yarn dev -p 3001
+# another terminal
+npx local-ssl-proxy --source 3000 --target 3001   
+```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
