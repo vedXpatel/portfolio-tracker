@@ -32,7 +32,7 @@ export default function Dashboard () {
     const searchParams = useSearchParams();
     useEffect(() => {
         if(searchParams){
-            setCode(searchParams.get('code'));  //couldn't set code using useState
+            setCode(searchParams.get('code'));
             console.log(`Code: ${code}`);
         }
     }, []);
