@@ -46,7 +46,7 @@ export default function Dashboard () {
         console.warn(error);
     }
     }
-    
+
     const searchParams = useSearchParams();
     useEffect(() => {
         if(searchParams){
@@ -54,7 +54,7 @@ export default function Dashboard () {
             console.log(`Code: ${code}`);
         }
     }, []);
-    
+
     useEffect(() => {
         code && fetchData();
         console.log(`Code inside: ${code}`);
