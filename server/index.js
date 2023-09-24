@@ -3,17 +3,21 @@ const axios = require('axios');
 const app = express();
 const cors = require('cors');
 const port = 5000;
+const bodyParser = require('body-parser');
 
 app.use(express.json());
-app.use(cors({
-    origin: 'https://localhost:3000',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type,Authorization', // Include 'Content-Type' in allowed headers
-}));
+// app.use(cors({
+//     origin: 'https://localhost:3000',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     allowedHeaders: 'Content-Type,Authorization', // Include 'Content-Type' in allowed headers
+// }));
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define a route to proxy requests
 app.post('/proxy', async (req, res) => {
     try {
+        // console.log(`req.body : ${Object.entries(req.body)}`);
         const response = await axios({
             method: req.method,
             url: 'https://api-v2.upstox.com/login/authorization/token',
