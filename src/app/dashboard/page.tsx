@@ -42,9 +42,9 @@ export default function Dashboard() {
       method: "DELETE",
       url: process.env.NEXT_PUBLIC_UPSTOX_BASE_API + "/logout",
       headers: {
-        accept: "application/json",
+        "accept": "application/json",
         "Api-Version": "2.0",
-        Authorization: "Bearer " + authToken,
+        "Authorization": "Bearer " + authToken,
       },
     });
     response.data.status === "success"
