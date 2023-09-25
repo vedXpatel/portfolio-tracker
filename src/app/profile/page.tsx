@@ -79,7 +79,6 @@ const Profile = () => {
   return (
       <>
         <div className="container items-center w-[100vw] h-[100vh]">
-
         {
           totalProfit > 0 ? <h1 className="text-green-500">Profit/Loss: {totalProfit}</h1> :
               <h1 className="text-red-500">Profit/Loss: {totalProfit}</h1>
@@ -135,8 +134,10 @@ const Profile = () => {
             }</p>
           </TabsContent>
         </Tabs>
+          <div className="grid grid-cols-2">
           <Order type="Buy"/>
           <Order type="Sell"/>
+          </div>
         </div>
       </>
       )

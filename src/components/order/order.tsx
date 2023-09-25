@@ -27,12 +27,16 @@ import {
   SelectGroup,
   SelectLabel,
 } from "@/components/ui/select";
+import React, {RefObject, useRef, useState} from 'react';
 
 interface OrderProps {
   type: string;
 }
 
 const Order = ({ type }: OrderProps) => {
+
+  const [orderType, setOrderType] = useState<string>('MARKET');
+  console.log(orderType);
   return (
     <>
       <div className="container items-center">
@@ -51,9 +55,14 @@ const Order = ({ type }: OrderProps) => {
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label>Price</Label>
-                <Input className="col-span-3" type="number" min="0.0" />
+                {
+                  orderType === 'MARKET' || orderType === 'SL-M' ?
+                <Input className="col-span-3" type="number" min="0.0" placeholder='Market' disabled/>
+                      :
+                      <Input className="col-span-3" type="number" min="0.0"/>
+                }
               </div>
-              <Tabs defaultValue="MARKET" className="items-center ">
+              <Tabs defaultValue="MARKET" className="items-center " onValueChange={(value: string) => setOrderType(value)}>
                 <TabsList className="grid w-[30vw] items-center grid-cols-4">
                   <TabsTrigger value="MARKET">Market</TabsTrigger>
                   <TabsTrigger value="LIMIT">Limit</TabsTrigger>
