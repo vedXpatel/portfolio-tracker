@@ -4,13 +4,11 @@ import {useEffect, useState} from "react";
 import axios from 'axios';
 const Profile = () => {
 
-    // untested code
-
     const searchParams = useSearchParams();
     const [token,setToken] = useState<string | undefined>();
 
     useEffect(() => {
-        if(searchParams){//couldn't set code using useState
+        if(searchParams){
             console.log(`Code: ${searchParams.get('token')}`);
             setToken(JSON.stringify(searchParams.get('token')));
         }
@@ -23,7 +21,7 @@ const Profile = () => {
             headers: {
                 'accept': 'application/json',
                 'Api-Version': '2.0',
-                'Authorization' : 'Bearer ' + token,
+                'Authorization' : token,
             }
         })
         return response;
@@ -31,8 +29,9 @@ const Profile = () => {
 
     useEffect(() => {
         if(token){
-            const response = getHoldings();
-            console.log(`holdings data: ${response}`);
+            getHoldings()
+                .then((response) => console.log(response.data))
+                .catch((error) => console.warn(error));
         }
     },[token])
 

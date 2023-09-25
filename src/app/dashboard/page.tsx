@@ -28,7 +28,7 @@ export default function Dashboard () {
         console.warn(error);
     }
     }
-    
+
     const searchParams = useSearchParams();
     useEffect(() => {
         if(searchParams){
@@ -49,7 +49,7 @@ export default function Dashboard () {
         });
         response.data.status === 'success' ? alert('logged out successfully') : alert ('unable to log out');
     }
-    
+
     useEffect(() => {
         code && fetchData();
         console.log(`Code inside: ${code}`);
