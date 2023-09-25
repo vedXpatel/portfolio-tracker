@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Api from '@/components/api/api';
+import Order from '@/components/order/order';
 
 
 const Profile = () => {
@@ -113,8 +114,8 @@ const Profile = () => {
                     <TableCell>{item.tradingsymbol}</TableCell>
                     <TableCell>{item.company_name}</TableCell>
                     {
-                      item.pnl < 0 ? <TableCell className="text-right text-red-500">{item.pnl}</TableCell>
-                          : <TableCell className="text-right text-green-500">{item.pnl}</TableCell>
+                      item.pnl < 0 ? <TableCell className="text-red-500">{item.pnl}</TableCell>
+                          : <TableCell className="text-green-500">{item.pnl}</TableCell>
                     }
                     <TableCell>{item.quantity}</TableCell>
                     <TableCell>{item.last_price}</TableCell>
@@ -134,6 +135,8 @@ const Profile = () => {
             }</p>
           </TabsContent>
         </Tabs>
+          <Order type="Buy"/>
+          <Order type="Sell"/>
         </div>
       </>
       )
