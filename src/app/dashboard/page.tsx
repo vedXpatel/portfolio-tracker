@@ -44,7 +44,7 @@ export default function Dashboard () {
             headers: {
                 'accept': 'application/json',
                 'Api-Version': '2.0',
-                'Authorization': 'Bearer access_token',
+                'Authorization': 'Bearer ' + authToken,
             }
         });
         response.data.status === 'success' ? alert('logged out successfully') : alert ('unable to log out');
