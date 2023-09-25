@@ -104,11 +104,6 @@ const Profile = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-
-        {
-          holdings.length > 0 &&
-            holdings.map((item,index) => {
-              return(
                   <TableRow key={index}>
                     <TableCell className="font-medium">{index + 1}</TableCell>
                     <TableCell>{item.tradingsymbol}</TableCell>
@@ -121,6 +116,7 @@ const Profile = () => {
                     <TableCell>{item.last_price}</TableCell>
                     <TableCell>{item.average_price}</TableCell>
                   </TableRow>
+
               )
             })
         }
