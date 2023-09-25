@@ -83,9 +83,9 @@ const Order = ({type}: OrderProps) => {
                                                 </div>
                                                 <div className="grid grid-cols-4 items-center gap-4">
                                                     <Label>Validity</Label>
-                                                    <Select className="col-span-3">
+                                                    <Select>
                                                         <SelectTrigger className="w-[180px]">
-                                                            <SelectValue placeholder="Validity" value='DAY' />
+                                                            <SelectValue placeholder="Validity" />
                                                         </SelectTrigger>
                                                         <SelectContent>
                                                             <SelectGroup>
@@ -113,9 +113,9 @@ const Order = ({type}: OrderProps) => {
                                                 </div>
                                                 <div className="grid grid-cols-4 items-center gap-4">
                                                     <Label>Validity</Label>
-                                                    <Select className="col-span-3">
+                                                    <Select >
                                                         <SelectTrigger className="w-[180px]">
-                                                            <SelectValue placeholder="Validity" value='DAY' />
+                                                            <SelectValue placeholder="Validity" />
                                                         </SelectTrigger>
                                                         <SelectContent>
                                                             <SelectGroup>
@@ -149,9 +149,9 @@ const Order = ({type}: OrderProps) => {
                                                 </div>
                                                 <div className="grid grid-cols-4 items-center gap-4">
                                                     <Label>Validity</Label>
-                                                    <Select className="col-span-3" defautValue="Day" disabled>
+                                                    <Select  disabled>
                                                         <SelectTrigger className="w-[180px]">
-                                                            <SelectValue placeholder="Validity" value='DAY' />
+                                                            <SelectValue placeholder="Validity" />
                                                         </SelectTrigger>
                                                         <SelectContent>
                                                             <SelectGroup>
@@ -184,9 +184,9 @@ const Order = ({type}: OrderProps) => {
                                                 </div>
                                                 <div className="grid grid-cols-4 items-center gap-4">
                                                     <Label>Validity</Label>
-                                                    <Select className="col-span-3" defautValue="Day" disabled>
+                                                    <Select  disabled>
                                                         <SelectTrigger className="w-[180px]">
-                                                            <SelectValue placeholder="Validity" value='DAY' />
+                                                            <SelectValue placeholder="Validity" />
                                                         </SelectTrigger>
                                                         <SelectContent>
                                                             <SelectGroup>
