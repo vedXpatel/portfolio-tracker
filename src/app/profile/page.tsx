@@ -2,17 +2,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-
-
 const Profile = () => {
   const searchParams = useSearchParams();
   const [token, setToken] = useState<string | undefined>();
@@ -53,39 +42,16 @@ const Profile = () => {
 
   return (
       <>
-        <Table>
-          <TableCaption>Holdings</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead>No.</TableHead>
-              <TableHead>Ticker</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Profit/Loss</TableHead>
-              <TableHead>Quantity</TableHead>
-              <TableHead>LTP</TableHead>
-              <TableHead>AVG Price</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-
         {
           holdings.length > 0 &&
             holdings.map((item,index) => {
               return(
-                  <TableRow key={index}>
-                    <TableCell className="font-medium">{index + 1}</TableCell>
-                    <TableCell>{item.tradingsymbol}</TableCell>
-                    <TableCell>{item.company_name}</TableCell>
-                    <TableCell className="text-right">{item.pnl}</TableCell>
-                    <TableCell>{item.quantity}</TableCell>
-                    <TableCell>{item.last_price}</TableCell>
-                    <TableCell>{item.average_price}</TableCell>
-                  </TableRow>
+                  <p key={index}>
+                    {item.company_name}
+                  </p>
               )
             })
         }
-          </TableBody>
-        </Table>
       </>
       )
 };
