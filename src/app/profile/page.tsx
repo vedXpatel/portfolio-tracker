@@ -10,13 +10,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Api from '@/components/api/api';
 
 
 const Profile = () => {
   const searchParams = useSearchParams();
-  const [token, setToken] = useState<string | undefined>();
+  const [token, setToken] = useState<string>('');
   const [holdings, setHoldings] = useState<Array<object>>([]);
+  const [positions, setPositions] = useState<Array<object>>([]);
   const [totalProfit, setTotalProfit] = useState<number>(0);
 
   useEffect(() => {
@@ -41,14 +44,24 @@ const Profile = () => {
     return response;
   };
 
+  const getPositions = async () => {
+    const response = await Api({path: '/portfolio/short-term-positions', token: token});
+  }
+
   useEffect(() => {
     if (token) {
       getHoldings()
         .then((response) => {
-          console.log(response.data.data);
+          // console.log(response.data.data);
           setHoldings(response.data.data);
         })
         .catch((error) => console.warn(error));
+      getPositions()
+          .then((response) => {
+            console.log(response);
+            setPositions(response.data.data);
+          })
+          .catch(error => console.warn(error));
     }
   }, [token]);
 
@@ -64,11 +77,19 @@ const Profile = () => {
 
   return (
       <>
+        <div className="container items-center w-[100vw] h-[100vh]">
+
         {
           totalProfit > 0 ? <h1 className="text-green-500">Profit/Loss: {totalProfit}</h1> :
               <h1 className="text-red-500">Profit/Loss: {totalProfit}</h1>
         }
-        <Table className="w-100">
+        <Tabs defaultValue="holdings" className="w-[50vw] items-center">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="holdings">Holdings</TabsTrigger>
+            <TabsTrigger value="positions">Positions</TabsTrigger>
+          </TabsList>
+          <TabsContent value="holdings">
+        <Table className="w-full items-center">
           <TableCaption>Holdings</TableCaption>
           <TableHeader>
             <TableRow>
@@ -104,6 +125,16 @@ const Profile = () => {
         }
           </TableBody>
         </Table>
+          </TabsContent>
+          <TabsContent value='positions'>
+            <p>{positions.length > 0 ? positions.map((item,index)=> {
+              return (<p key={index}> {item.tradingsymbol} </p>)
+            }) :
+             <p> no positions found </p>
+            }</p>
+          </TabsContent>
+        </Tabs>
+        </div>
       </>
       )
 };
