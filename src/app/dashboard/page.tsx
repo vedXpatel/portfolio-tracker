@@ -2,9 +2,9 @@
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import React, { SetStateAction, useEffect, useState } from "react";
-
 import axios from "axios";
-export default function Dashboard() {
+
+export default function dashboard() {
   const [code, setCode] = useState<string | null>();
   const [authToken, setAuthToken] = useState<string | null>("something");
 
