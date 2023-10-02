@@ -5,6 +5,7 @@ import React, { SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import { ModeToggle } from "@/components/navbar/theme-toggle";
 
+
 export default function dashboard() {
   const [code, setCode] = useState<string | null>();
   const [authToken, setAuthToken] = useState<string | null>("something");
@@ -22,12 +23,15 @@ export default function dashboard() {
         })
         .then((response) => {
           console.log(response.data.access_token);
-          response.data.access_token !== undefined &&
+          const token = response.data.access_token;
+          token && alert(`Successfully Logged In!`);
+          token !== undefined &&
             setAuthToken(response.data.access_token);
         })
         .catch((error) => {
-          alert(error.response.data.errors[0].message); 
-          console.warn(error)});
+          alert(error.response.data.errors[0].message);
+          console.warn(error)
+        });
     } catch (error) {
       console.warn(error);
     }
@@ -64,7 +68,7 @@ export default function dashboard() {
   return (
     <>
       <div className="container">
-        <ModeToggle/>
+        <ModeToggle />
         <h1 className="title">Title</h1>
         <button id="upstox">
           <a href={process.env.NEXT_PUBLIC_UPSTOX_URL}>Upstox</a>
