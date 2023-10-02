@@ -21,14 +21,14 @@ export default function dashboard() {
           grant_type: "authorization_code",
           "Access-Control-Allow-Headers": "*",
         })
-        .then((response) => {
+        .then((response: object | any) => {
           console.log(response.data.access_token);
           const token = response.data.access_token;
           token && alert(`Successfully Logged In!`);
           token !== undefined &&
             setAuthToken(response.data.access_token);
         })
-        .catch((error) => {
+        .catch((error: object | any) => {
           alert(error.response.data.errors[0].message);
           console.warn(error)
         });
