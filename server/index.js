@@ -20,7 +20,7 @@ app.post("/proxy", async (req, res) => {
     // console.log(`req.body : ${Object.entries(req.body)}`);
     const response = await axios({
       method: req.method,
-      url: "https://api-v2.upstox.com/login/authorization/token",
+      url: "https://api.upstox.com/v2/login/authorization/token",
       headers: {
         accept: "application/json",
         "Api-Version": "2.0",
